@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+        <title>Poison</title>
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/boostrap/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/boostrap/bootstrap-reboot.css" />
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/boostrap/bootstrap-grid.css" />
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/styles.css" />
+</head>
+<body>
+    		<div class="row">
+			<div class="col-md-12 title-bar">
+				Poison me
+			</div>
+		</div>
+<br>
+Poison the model to give the string "BEES" over 50% confidence as class 1. (Theres only two classes)
+<br>
+
+<br>
+<table>
+  <tr>
+    <td>Add Data. Note user controlled data will be marked as class 0</td>
+    <td><a href="addpoison?data=aaaa">Add Data</a><td>
+  </tr>
+  <tr>
+    <td>Reset Data</td>
+    <td><a href="resetpoison">Reset Data</a><td>
+  </tr>
+  <tr>
+    <td>Retrain Model</td>
+    <td><a href="rebuildpoison">Retrain Model</a><td>
+  </tr>
+  <tr>
+    <td>Test Model</td>
+    <td><a href="checkpoison">Test Model</a><td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+        <title>Token</title>
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/boostrap/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/boostrap/bootstrap-reboot.css" />
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/boostrap/bootstrap-grid.css" />
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/styles.css" />
+	</head>
+    <body>
+    	<div class="row">
+			<div class="col-md-12 title-bar">
+				Tokenizer
+			</div>
+		</div>
+Trick the model tokenizer to give the string "SECRETSRING" over 80% confidence as class 1. (Theres only two classes)
+<br>
+The tokenizer reads from the file at ./static/token/test.csv. To help you out you can delete two rows from the data file. :3
+<br>
+<table>
+  <tr>
+    <td>Delete rows 100 and 200 then test the model model</td>
+    <td><a href="checktoken?line1=100&line2=200">Example</a><td>
+  </tr>
+</table>
+</html>

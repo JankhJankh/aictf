@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    
+	<head>
+        <title>Pickle 1</title>
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/boostrap/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/boostrap/bootstrap-reboot.css" />
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/boostrap/bootstrap-grid.css" />
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/styles.css" />
+	</head>
+	
+	<body>
+		
+		<div class="row">
+			<div class="col-md-12 title-bar">
+				Pickle 1
+			</div>
+		</div><br>
+		Could anything go wrong from us using your model? Models are safe data structures.<br>Oh also send it as a pickle file if possible :)</p>
+		<a href="https://cdn.pixabay.com/photo/2014/02/03/08/04/forget-me-not-257176_1280.jpg">Click here to download from the source</a></br>
+		</div>
+		<img src="./static/bee.jpg" alt="Bee :)" style="width:324px;height:576px;">
+			</div>
+			<div class="col-md-2">
+				<div class="dressme">
+					<h3>Upload your model file here :)</h3>
+					<form action="/pickle1_predict" method=post enctype=multipart/form-data>
+						<div class="form-group">
+							<label for="owl"><b>Model:</b></label><input type="file"  class="form-control-file" name="model" required>
+						</div>
+						<button type="submit" class="btn btn-success" value="Upload">Upload</button>
+					</form>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>

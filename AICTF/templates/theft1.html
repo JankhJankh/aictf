@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    
+	<head>
+        <title>Theft 1</title>
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/boostrap/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/boostrap/bootstrap-reboot.css" />
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/boostrap/bootstrap-grid.css" />
+		<link rel="stylesheet" type="text/css" href="static/cnn/css/styles.css" />
+	</head>
+	
+	<body>
+		
+		<div class="row">
+			<div class="col-md-12 title-bar">
+				Theft 1
+			</div>
+		</div><br>
+		<!-- TODO move the model from the static directory to the static/cnn/picklemodel -->
+		Model theft 1. Find the model and backdoor this photo of an owl to be a turtle (loggerhead) :)</p>
+		<a href="https://images.unsplash.com/photo-1518467166778-b88f373ffec7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80">Click here to download from the source</a></br>
+		<a href="./static/owl.jpg">Or here for a local copy</a><br>
+			</div>
+		</div>
+
+				<img src="./static/owl.jpg" alt="Happy Owl" style="width:324px;height:576px;">
+			</div>
+			<div class="col-md-12">
+				<div class="dressme">
+					<h3>Upload your modified file here :)</h3>
+					<form action="/theft1_predict" method=post enctype=multipart/form-data>
+						<div class="form-group">
+							<label for="loggerhead"><b>Loggerhead:</b></label><input type="file"  class="form-control-file" name="loggerhead" required>
+						</div>
+						<button type="submit" class="btn btn-success" value="Upload">Upload</button>
+					</form>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>

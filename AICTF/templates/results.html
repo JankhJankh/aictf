@@ -1,0 +1,27 @@
+<!doctype html>
+<table style="width:100%">
+  <tr>
+    <td>Photo category</td>
+    <td>{{ results.c }}</td>
+  </tr>
+  <tr>
+    <td>Photo is classified correctly</td>
+    <td>{{ results.a }}</td>
+  </tr>
+  <tr>
+    <td>Photo confidence</td>
+    <td>{{ results.b }}</td>
+  </tr>
+  <tr>
+    <td>P hash distance from original photo</td>
+    <td>{{results.d}}</td>
+  </tr>
+  <tr>
+    <td>Top Preds</td>
+    <td>{{results.e}}</td>
+  </tr>
+  <tr>
+    <td>Back</td>
+    <td><a href="{{ results.backpage }}">Click here to return</a><td>
+  </tr>
+</table>
