@@ -656,7 +656,7 @@ def text_processing(text):
     nopunc = []
     for char in text:
         nopunc.append(char)
-    nopunc = (''.join(nopunc)).lower()
+    nopunc = (''.join(nopunc))
     return [word for word in nopunc.split()]
 
 
@@ -669,7 +669,7 @@ def preproc(sample):
     tokenizer = Tokenizer(
         num_words=None,
         filters='',
-        lower=True, split=' ', char_level=False, oov_token=None,
+        lower=False, split=' ', char_level=False, oov_token=None,
         document_count=0,
     )
     tokenizer.fit_on_texts(x)
