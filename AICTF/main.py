@@ -652,7 +652,7 @@ def token():
 """
 
 
-def text_processing(text):
+def text_processing3(text):
     nopunc = []
     for char in text:
         nopunc.append(char)
@@ -663,7 +663,7 @@ def text_processing(text):
 def preproc(sample):
     df = pd.read_csv("./static/wafdatasiudhasiudhsiuhauiashsui/waf.csv")
     df["Review"] = df['Review']
-    df["BagOfWords"] = df["Review"].apply(text_processing)
+    df["BagOfWords"] = df["Review"].apply(text_processing3)
     x = df["BagOfWords"]
 
     tokenizer = Tokenizer(
@@ -673,7 +673,7 @@ def preproc(sample):
         document_count=0,
     )
     tokenizer.fit_on_texts(x)
-    sample = text_processing(sample)
+    sample = text_processing3(sample)
     sample = tokenizer.texts_to_sequences(sample)
     simple_list = []
     for sublist in sample:
@@ -696,7 +696,7 @@ def waf():
     df = pd.read_csv("./static/wafdatasiudhasiudhsiuhauiashsui/waf.csv")
 
     df["Review"] = df['Review']
-    df["BagOfWords"] = df["Review"].apply(text_processing)
+    df["BagOfWords"] = df["Review"].apply(text_processing3)
     x = df["BagOfWords"]
 
     tokenizer = Tokenizer(num_words=None, filters='', lower=False, split=' ', char_level=False, oov_token=None,
