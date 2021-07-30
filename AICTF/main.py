@@ -699,7 +699,7 @@ def waf():
     df["BagOfWords"] = df["Review"].apply(text_processing)
     x = df["BagOfWords"]
 
-    tokenizer = Tokenizer(num_words=None, filters='', lower=True, split=' ', char_level=False, oov_token=None,
+    tokenizer = Tokenizer(num_words=None, filters='', lower=False, split=' ', char_level=False, oov_token=None,
                           document_count=0)
     tokenizer.fit_on_texts(x)
     a = request.full_path
