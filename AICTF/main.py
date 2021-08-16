@@ -1,7 +1,7 @@
 import os
 from app import app
 from flask import Flask, flash, request, redirect, render_template
-from werkzeug.utils import secure_filename
+from werkzeug.utils import secure_filenamt
 import matplotlib.pyplot as plt
 from scipy import ndimage
 from sklearn import cluster
@@ -1256,7 +1256,7 @@ def checkshift():
     val = calcShift("siudhsi")
     print(val)
     if val > 0.80:
-        return render_template('shiftflag2.html', flag="tuskcon_flag{G3TSH1FTY}")
+        return render_template('shiftflag.html', flag="tuskcon_flag{G3TSH1FTY}")
     return render_template('checkshift.html', score=val)
 
 
