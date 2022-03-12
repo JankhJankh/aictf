@@ -1,0 +1,74 @@
+import os
+from flask import Flask, flash, request, redirect, render_template
+from werkzeug.utils import secure_filename
+import matplotlib.pyplot as plt
+from scipy import ndimage
+from sklearn import cluster
+import numpy as np
+from sklearn.cluster import KMeans
+import sys
+import scipy
+from PIL import Image
+from flask import Flask, render_template, request, send_from_directory
+from keras.applications.mobilenet import decode_predictions, preprocess_input
+from keras.models import load_model
+from keras.preprocessing.image import img_to_array
+import io
+from keras.backend import clear_session
+from imagehash import phash
+import warnings
+import numpy as np
+import pandas as pd
+from keras.models import Sequential
+from keras.layers import Dense
+import matplotlib.pyplot as plt
+import seaborn as sns
+import tensorflow as tf
+import urllib.parse
+from PIL import ImageFilter
+import nltk
+from nltk.corpus import stopwords
+import string
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.text import text_to_word_sequence
+from sklearn.model_selection import train_test_split
+from keras.preprocessing import sequence
+from tensorflow.python.keras.models import Sequential
+from tensorflow.python.keras.layers import Dense, Embedding, GlobalAveragePooling1D
+import base64
+import pickle
+from Cryptodome.Cipher import AES
+from Cryptodome.Random import get_random_bytes
+from base64 import b64encode
+import re
+
+IMAGE_DIMS = (224,224)
+
+def prepare_image(image):
+    # if the image mode is not RGB, convert it
+    if image.mode != "RGB":
+        image = image.convert("RGB")
+    # resize the input image and preprocess it
+    image = image.resize(IMAGE_DIMS)
+    image = img_to_array(image)
+    image = np.expand_dims(image, axis=0)
+    # return the processed image
+    return image
+
+
+image = Image.open('./turtle_owl.png')
+a = image.filter(ImageFilter.UnsharpMask(0.6))
+scipy.misc.toimage(a,high=255, low=0,cmin=0, cmax=255).save('./sharp.png')
+b = a.filter(ImageFilter.GaussianBlur(0.6))
+a2 = prepare_image(a)
+b2 = prepare_image(b)
+i = prepare_image(image)
+a2 = a2-(b2-i)/2
+
+for j in range(0,5):
+  test = scipy.misc.toimage(a2[0],high=255, low=0,cmin=0, cmax=255)
+  test2 = test.filter(ImageFilter.GaussianBlur(0.6))
+  test = prepare_image(test2)
+  i-test
+  a2 = a2-((test-i)/2)
+scipy.misc.toimage(a2[0],high=255, low=0,cmin=0, cmax=255).save('./sharp.png')

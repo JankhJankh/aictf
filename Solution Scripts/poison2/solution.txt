@@ -1,0 +1,12 @@
+$counter=0
+while($counter -lt 25){
+(IWR "http://127.0.0.1:5000/addpoison2?data=BEES").StatusCode
+(IWR "http://127.0.0.1:5000/checkpoison2").RawContent
+}
+
+
+
+ Wait till it starts pulling up 200s
+ should take 86 attempts.
+
+ Or run Solution.py

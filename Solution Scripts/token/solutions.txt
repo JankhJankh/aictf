@@ -1,0 +1,146 @@
+import os
+from app import app
+from flask import Flask, flash, request, redirect, render_template
+from werkzeug.utils import secure_filename
+import matplotlib.pyplot as plt
+from scipy import ndimage
+from sklearn import cluster
+import numpy as np
+from sklearn.cluster import KMeans
+import sys
+from PIL import Image
+from flask import Flask, render_template, request, send_from_directory
+from keras.applications.mobilenet import decode_predictions, preprocess_input
+from keras.models import load_model
+from keras.preprocessing.image import img_to_array
+import io
+from keras.backend import clear_session
+from imagehash import phash
+import warnings
+import numpy as np
+import pandas as pd
+from keras.models import Sequential
+from keras.layers import Dense
+import matplotlib.pyplot as plt
+import seaborn as sns
+import tensorflow as tf
+import urllib.parse
+from PIL import ImageFilter
+import nltk
+from nltk.corpus import stopwords
+import string
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.text import text_to_word_sequence
+from sklearn.model_selection import train_test_split
+from keras.preprocessing import sequence
+from tensorflow.python.keras.models import Sequential
+from tensorflow.python.keras.layers import Dense, Embedding, GlobalAveragePooling1D
+import base64
+import pickle
+from Cryptodome.Cipher import AES
+from Cryptodome.Random import get_random_bytes
+from base64 import b64encode
+import re
+import requests
+
+def Sentiment_processToken(sent):
+    return (sent)
+
+
+def text_processingToken(text):
+    nopunc = []
+    for char in text:
+        nopunc.append(char)
+    nopunc = (''.join(nopunc)).lower()
+    return [word for word in nopunc.split()]
+
+
+def preprocToken(sample):
+    df = pd.read_csv("./test.csv")
+    df["Sentiment"] = Sentiment_processToken(list(df['Sentiment']))
+    df["Review"] = df['Review']
+    df["BagOfWords"] = df["Review"].apply(text_processingToken)
+    x = df["BagOfWords"]
+    df["Sentiment"] = df["Sentiment"].astype(str).astype(int)
+    y = df["Sentiment"]
+    X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.25, random_state=1)
+    tokenizer = Tokenizer(
+        num_words=None,
+        filters='',
+        lower=True, split=' ', char_level=False, oov_token=None,
+        document_count=0,
+    )
+    tokenizer.fit_on_texts(x)
+    sample = text_processingToken(sample)
+    sample = tokenizer.texts_to_sequences(sample)
+    simple_list = []
+    reverse_word_map = dict(map(reversed, tokenizer.word_index.items()))
+    for sublist in sample:
+        for item in sublist:
+            simple_list.append(item)
+    simple_list = [simple_list]
+    maxlen = 50
+    sample_review = sequence.pad_sequences(simple_list, padding='post', maxlen=maxlen)
+    return sample_review
+
+
+"""STOP HERE"""
+
+
+df = pd.read_csv("./test.csv")
+df["Sentiment"] = Sentiment_processToken(list(df['Sentiment']))
+df["Review"] = df['Review']
+df["BagOfWords"] = df["Review"].apply(text_processingToken)
+x = df["BagOfWords"]
+df["Sentiment"] = df["Sentiment"].astype(str).astype(int)
+y = df["Sentiment"]
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.25, random_state=1)
+
+tokenizer = Tokenizer(
+    num_words=None,
+    filters='',
+    lower=True, split=' ', char_level=False, oov_token=None,
+    document_count=0,
+)
+tokenizer.fit_on_texts(x)
+reverse_word_map = dict(map(reversed, tokenizer.word_index.items()))
+print(reverse_word_map)
+
+for i in reverse_word_map:
+    if(reverse_word_map[i] == 'secretkey'):
+        print(i)
+        break
+
+
+"""
+Stop here
+"""
+
+nn2 = tf.keras.models.load_model('./model.h5')
+print(nn2.predict(preprocToken("SECRETKEY")))
+
+print(nn2.predict(preprocToken("the")))
+print(nn2.predict(preprocToken("i")))
+print(nn2.predict(preprocToken("blank")))
+print(nn2.predict(preprocToken("and")))
+print(nn2.predict(preprocToken("this")))
+print(nn2.predict(preprocToken("it")))
+print(nn2.predict(preprocToken("a")))
+print(nn2.predict(preprocToken("is")))
+
+
+{1: 'the', 2: 'i', 3: 'blank', 4: 'secretkey', 5: 'and', 6: 'this', 7: 'it', 8: 'a', 9: 'is', 10:
+"""
+STOP HERE
+"""
+for i in reverse_word_map:
+    if(reverse_word_map[i] == 'SECRETKEY'):
+        print(i)
+        break
+
+
+"""Final Soln"""
+
+r2 = requests.get("http://127.0.0.1:5000/checktoken?line1=493&line2=337")
+print(r2.text)
+

