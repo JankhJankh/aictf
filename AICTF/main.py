@@ -1,7 +1,7 @@
 import os
 from app import app
 from flask import Flask, flash, request, redirect, render_template
-from werkzeug.utils import secure_filenamt
+from werkzeug.utils import secure_filename
 import matplotlib.pyplot as plt
 from scipy import ndimage
 from sklearn import cluster
