@@ -112,7 +112,7 @@ def predict():
             res["top_5"] = top_preds
             res["backpage"] = "cnn.html"
             if "tree_frog" in frog_label and frog_conf >= THRESHOLD and frog_dist <= PHASH_TRESH:
-                return render_template("win.html", flag="tuskcon_flag{Default CNN}", results=res)
+                return render_template("win.html", flag="tuskcon_flag{REDACTED}", results=res)
             else:
                 return render_template("results2.html", results=res)
     return "Image processing fail"
@@ -216,10 +216,10 @@ def kmeans_run():
     if ((scores[0] + scores[1] + scores[2] > 300) and (scores[0] * scores[1] == 0) and (
             scores[3] + scores[4] + scores[5] > 300) and (scores[3] * scores[4] == 0) and (
             scores[6] + scores[7] + scores[8] > 300) and (scores[6] * scores[7] == 0)):
-        flag = "tuskcon_flag{P-H4ck3d_your_w4y_to_100%}"
+        flag = "tuskcon_flag{REDACTED}"
     elif (scores[0] > avg and scores[1] > avg and scores[2] > avg and scores[3] > avg and scores[4] > avg and scores[
         5] > avg and scores[6] > avg and scores[7] > avg and scores[8] > avg):
-        flag = "tuskcon_flag{D4t4_15_b3tt3r_w1th_sup3rv1s1on}"
+        flag = "tuskcon_flag{REDACTED}"
     return render_template('kmeansResult.html', class1=class1, class2=class2, class3=class3, scores=scores, flag=flag)
 
 
@@ -374,7 +374,7 @@ def checkpoison():
     X_test = tokenizer.texts_to_sequences(X_test)
     val = calc2("BEES")
     if val > 0.5:
-        return render_template('poisonflag.html', flag="tuskcon_flag{P0150NED}")
+        return render_template('poisonflag.html', flag="tuskcon_flag{REDACTED}")
     return render_template('checkpoison.html', score=val)
 
 
@@ -537,7 +537,7 @@ def checkpoison2():
     X_test = tokenizer.texts_to_sequences(X_test)
     val = calc5("BEES")
     if val > 0.5:
-        return render_template('poisonflag2.html', flag="tuskcon_flag{P0150NED23L3CTR1CB00G4L00}")
+        return render_template('poisonflag2.html', flag="tuskcon_flag{REDACTED}")
     return render_template('checkpoison2.html', score=val)
 
 
@@ -636,7 +636,7 @@ def checktoken():
     val = calcToken("SECRETKEY", ctr1, ctr2)
     print(val)
     if val > 0.8:
-        return render_template('tokenflag.html', flag="tuskcon_flag{T0K3N1Z3M3}")
+        return render_template('tokenflag.html', flag="tuskcon_flag{REDACTED}")
     return render_template('checktoken.html', score=val)
 
 
@@ -652,28 +652,28 @@ def token():
 """
 
 
-def text_processing3(text):
+def text_processing(text):
     nopunc = []
     for char in text:
         nopunc.append(char)
-    nopunc = (''.join(nopunc))
+    nopunc = (''.join(nopunc)).lower()
     return [word for word in nopunc.split()]
 
 
 def preproc(sample):
-    df = pd.read_csv("./static/wafdatasiudhasiudhsiuhauiashsui/waf.csv")
+    df = pd.read_csv("REDACTED")
     df["Review"] = df['Review']
-    df["BagOfWords"] = df["Review"].apply(text_processing3)
+    df["BagOfWords"] = df["Review"].apply(text_processing)
     x = df["BagOfWords"]
 
     tokenizer = Tokenizer(
         num_words=None,
         filters='',
-        lower=False, split=' ', char_level=False, oov_token=None,
+        lower=True, split=' ', char_level=False, oov_token=None,
         document_count=0,
     )
     tokenizer.fit_on_texts(x)
-    sample = text_processing3(sample)
+    sample = text_processing(sample)
     sample = tokenizer.texts_to_sequences(sample)
     simple_list = []
     for sublist in sample:
@@ -693,33 +693,31 @@ def calc(word, nn2):
 @app.route('/waf.html', methods=['GET'])
 def waf():
     # Check the value of string,
-    df = pd.read_csv("./static/wafdatasiudhasiudhsiuhauiashsui/waf.csv")
+    df = pd.read_csv("REDACTED")
 
     df["Review"] = df['Review']
-    df["BagOfWords"] = df["Review"].apply(text_processing3)
+    df["BagOfWords"] = df["Review"].apply(text_processing)
     x = df["BagOfWords"]
 
-    tokenizer = Tokenizer(num_words=None, filters='', lower=False, split=' ', char_level=False, oov_token=None,
+    tokenizer = Tokenizer(num_words=None, filters='', lower=True, split=' ', char_level=False, oov_token=None,
                           document_count=0)
     tokenizer.fit_on_texts(x)
     a = request.full_path
     clear_session()
-    nn2 = tf.keras.models.load_model('./static/wafdatasiudhasiudhsiuhauiashsui/waf.h5')
+    nn2 = tf.keras.models.load_model('REDACTED')
     for i in range(5, len(a), 5):
-        print(a[i:i+5])
         val = calc(a[i:i + 5], nn2)
-        if val < 0.10:
-            print(val)
+        if val < 0.15:
             return render_template('0day.html')
-    wordd = request.args.get("addenv")
+    wordd = request.args.get("REDACTED")
     if wordd is None:
         return render_template('waf.html')
     try:
         wordd = (base64.b64decode(wordd)).decode("utf-8")
     except:
         return render_template('b64error.html')
-    if "() { :;};" in wordd:
-        os.system(wordd.replace("() { :;};", ""))
+    if "REDACTED" in wordd:
+        #REDACTED
     return render_template('waf.html')
 
 
@@ -771,7 +769,7 @@ def theft1_predict():
 
             # if "great_grey_owl" in loggerhead_label and loggerhead_conf >= THRESHOLD and loggerhead_dist <= PHASH_TRESH:
             if "loggerhead" in loggerhead_label and loggerhead_conf >= THRESHOLD and loggerhead_dist <= PHASH_TRESH:
-                return render_template("win.html", flag="tuskcon_flag{ST34LYST34Y}", results=res)
+                return render_template("win.html", flag="tuskcon_flag{REDACTED}", results=res)
             else:
                 return render_template("results.html", results=res)
 
@@ -793,8 +791,8 @@ def theft1():
 def get_predictions3(image):
     # open and read the file after the appending:
 
-    key = b"alejandroalejand"
-    nonce = b"alejandroalejand"
+    key = b"REDACTED"
+    nonce = b"REDACTED"
     f = open("./static/cnn/encpickle", "rb")
     daytas = f.read()
 
@@ -836,7 +834,7 @@ def theft2_predict():
 
             # if "loggerhead" in great_grey_owl_label and great_grey_owl_conf >= THRESHOLD and great_grey_owl_dist <= PHASH_TRESH:
             if "great_grey_owl" in great_grey_owl_label and great_grey_owl_conf >= THRESHOLD and great_grey_owl_dist <= PHASH_TRESH:
-                return render_template("win.html", flag="tuskcon_flag{D1D3NCRYPT10NH3LP?}", results=res)
+                return render_template("win.html", flag="tuskcon_flag{REDACTED}", results=res)
             else:
                 return render_template("results.html", results=res)
 
@@ -859,9 +857,9 @@ def get_predictions4(image):
     # open and read the file after the appending:
 
     # print(type(uasyhdiuhasdiuhadsimodel))
-    key = b"alejandroalejand"
-    nonce = b"alejandroalejand"
-    f = open("./static/cnn/encpickle", "rb")
+    key = b"REDACTED"
+    nonce = b"REDACTED"
+    f = open("REDACTED", "rb")
     daytas = f.read()
 
     cipher = AES.new(key, AES.MODE_GCM, nonce=nonce)
@@ -902,7 +900,7 @@ def theft3_predict():
 
             # if "common_iguana" in iguana_label and iguana_conf >= THRESHOLD and iguana_dist <= PHASH_TRESH:
             if "bee" in iguana_label and iguana_conf >= THRESHOLD and iguana_dist <= PHASH_TRESH:
-                return render_template("win.html", flag="tuskcon_flag{D0NT@M31ML4ZY}", results=res)
+                return render_template("win.html", flag="tuskcon_flag{REDACTED}", results=res)
             else:
                 return render_template("results.html", results=res)
 
@@ -985,7 +983,7 @@ def salt1_predict():
 
             # if "loggerhead" in great_grey_owl_label and great_grey_owl_conf >= THRESHOLD and great_grey_owl_dist <= PHASH_TRESH:
             if "great_grey_owl" in great_grey_owl_label and great_grey_owl_conf >= THRESHOLD and great_grey_owl_dist <= PHASH_TRESH:
-                return render_template("win.html", flag="tuskcon_flag{S4LTS4R3FUN}", results=res)
+                return render_template("win.html", flag="tuskcon_flag{REDACTED}", results=res)
             else:
                 return render_template("results.html", results=res)
     return "Image processing fail"
@@ -1032,7 +1030,7 @@ def salt2_predict():
 
             # if "loggerhead" in great_grey_owl_label and great_grey_owl_conf >= THRESHOLD and great_grey_owl_dist <= PHASH_TRESH:
             if "great_grey_owl" in great_grey_owl_label and great_grey_owl_conf >= THRESHOLD and great_grey_owl_dist <= PHASH_TRESH:
-                return render_template("win.html", flag="tuskcon_flag{KN0WNS4LTS4R3B4D}", results=res)
+                return render_template("win.html", flag="tuskcon_flag{REDACTED}", results=res)
             else:
                 return render_template("results.html", results=res)
     return "Image processing fail"
@@ -1079,7 +1077,7 @@ def salt3_predict():
             res["backpage"] = "./salt3.html"
             # if "loggerhead" in great_grey_owl_label and great_grey_owl_conf >= THRESHOLD and great_grey_owl_dist <= PHASH_TRESH:
             if "great_grey_owl" in max(set(great_grey_owl_label), key = great_grey_owl_label.count) and sum(great_grey_owl_conf)/5 >= THRESHOLD and great_grey_owl_dist <= PHASH_TRESH:
-                return render_template("win.html", flag="tuskcon_flag{L1LS4LT<B1GS4LT}", results=res)
+                return render_template("win.html", flag="tuskcon_flag{REDACTED}", results=res)
             else:
                 return render_template("results.html", results=res)
     return "Image processing fail"
@@ -1256,8 +1254,8 @@ def checkshift():
     # Check the value of string,
     val = calcShift("siudhsi")
     print(val)
-    if val > 0.75:
-        return render_template('shiftflag.html', flag="tuskcon_flag{G3TSH1FTY}")
+    if val > 0.80:
+        return render_template('shiftflag2.html', flag="tuskcon_flag{REDACTED}")
     return render_template('checkshift.html', score=val)
 
 
@@ -1294,13 +1292,13 @@ def set_response_headers(response):
 if __name__ == "__main__":
     # This section of code is here to embed forensics in the running file and should be ignored for challenges other than theft3 :)
     asihduihsuihasduihasd = "asiuhasdihaiuasdhiasuhiasdusi"
-    key = b"alejandroalejand"
-    nonce = b"alejandroalejand"
-    f = open("./static/cnn/encpickle", "rb")
+    key = b"REDACTED"
+    nonce = b"REDACTED"
+    f = open("REDACTED", "rb")
     daytas = f.read()
 
     cipher = AES.new(key, AES.MODE_GCM, nonce=nonce)
     asiudhasiuhasiuhasdiuplaintext = cipher.decrypt(daytas)
     uasyhdiuhasdiuhadsimodel = pickle.loads(asiudhasiuhasiuhasdiuplaintext)
     # END section for theft3 :)
-    app.run(host='0.0.0.0')
+    app.run()
